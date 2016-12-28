@@ -1,0 +1,921 @@
+\documentclass[a4paper,10pt,smallheadings]{scrartcl} 
+
+\usepackage[ngerman]{babel} % damit er Umlaute etc. vesteht
+\usepackage[ansinew]{inputenc} % immer nehmen!
+\usepackage[T1]{fontenc} % immer nehmen!
+\usepackage{abstract}
+\usepackage{graphicx} % immer nehmen - zum Grafiken einbinden (vgl. Bsp. unten)
+\usepackage{amsmath, amssymb, amsthm} % Mathesatz
+\usepackage{multirow} % ebenso
+\usepackage{array} % Matrizen etc., vgl. Bsp. unten
+\usepackage{ragged2e} % bestimmt wichtig, wofür auch immer
+\usepackage{latexsym} % zusätzliche Zeichen
+\usepackage{bbm} % anscheinend nur KOMA
+\usepackage{bm}
+\usepackage{exscale} % ...
+\usepackage{mathrsfs} %... Mathesatz
+\usepackage{titlesec} % eigene Überschriften
+\usepackage{eufrak}
+\usepackage{paralist}
+\usepackage{placeins}
+\usepackage{rotating}
+
+\usepackage[usenames]{color}
+
+\usepackage{framed}% eigene Umgebungen
+\usepackage{marvosym} % EUR-Symbol
+\usepackage{multicol}
+
+\usepackage{enumerate}
+\usepackage{pifont}
+\usepackage{array}
+
+\usepackage[left=25mm,right=25mm, bottom=25mm, top=10mm]{geometry}
+
+\newtheorem{Definition}{\textbf{Definition}}
+\newtheorem{definition}{\textbf{Definition}}
+\newtheorem{theo}{\textbf{Theorem}}
+\newtheorem{Algorithmus}{Algorithmus}
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Conditions}{Conditions}
+
+\newtheoremstyle{ex}
+{\topsep}{\topsep} % Abstand nach oben und unten
+{\normalfont} % Textlayout
+{0pt}% Überschrift Einzug
+{\sffamily \bfseries}{} % Font und Satzzeichen danach
+{\newline} % Abstand nach Überschrift
+{} % Überschriftenspezifikation
+
+\theoremstyle{ex}
+\newtheorem{Exercise}{Aufgabe}
+\newcommand{\cov}{\text{Cov}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\corr}{\text{Corr}}
+\newcommand{\hamma}{\hat{\gamma}}
+\newcommand{\ho}{\hat{\rho}}
+\newcommand{\E}[1]{\text{E}\hspace*{-0.25ex}\left[\,#1\,\right]}% short-cut for e-operator
+
+\newenvironment{fshaded}{%
+\def\FrameCommand{\fcolorbox{framecolor}{shadecolor}}%
+\MakeFramed {\FrameRestore}}%
+{\endMakeFramed}
+
+\definecolor{shadecolor}{rgb}{.9,.9,1}%
+\definecolor{framecolor}{rgb}{.1,0,.7}% 
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\lfoot{\footnotesize \sf  Klausur zur Einführung in die Ökonometrie, WS 16/17}
+\cfoot{}
+\rfoot{\footnotesize \sf \thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand\HRule{\noindent\rule{\linewidth}{2pt}}
+\newcommand\HRuleTwo{\noindent\rule{\linewidth}{1pt}}
+
+
+\definecolor{refcol}{rgb}{0,0,.66}
+\usepackage[colorlinks=true,linkcolor=black, pagecolor=black, citecolor=black, filecolor=black, urlcolor=black, menucolor=black]{hyperref}
+
+\usepackage{Sweave}
+
+\usepackage{version}
+\includeversion{spaces}
+
+%************************************************************************************
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%*************************************************************************************
+
+\begin{document}
+
+\thispagestyle{empty}
+
+
+\noindent \HRule
+
+
+\begin{center}
+\sffamily
+
+\normalsize \textbf{Klausur zur}
+
+\large \textbf{Einführung in die Ökonometrie}
+
+\bigskip
+
+\normalsize \textbf{Wintersemester 16/17} 
+
+\bigskip
+
+\normalsize{(6 ECTS)}
+
+\bigskip
+
+\normalsize \textbf{06. Februar 2017}
+
+\rmfamily
+\end{center}
+
+\noindent \HRule
+
+\rmfamily
+
+\parindent 0mm
+\setcounter{page}{18}
+
+\vspace{.4cm}
+
+Anmerkungen:
+
+\begin{itemize}
+	\item Überprüfen Sie bitte sofort, ob Ihre Klausur vollständig ist. Sie sollte aus insgesamt 9 Seiten inklusive Deckblatt bestehen und 5 Aufgaben enthalten. Die letzten 4 Seiten enthalten Verteilungstabellen.
+	\item Schreiben Sie auf dieses Blatt Ihren Namen und Ihre Matrikelnummer und unterschreiben Sie unten.
+%	\item Schreiben Sie die Lösungen der Aufgaben direkt unter die Aufgabenstellungen. Falls Sie mehr Platz benötigen, verwenden Sie bitte die Rückseite \emph{und machen dies kenntlich.}
+	\item Zugelassene Hilfsmittel: Taschenrechner, Wörterbücher, handgeschriebene Formelsammlung auf \textbf{einem} DIN A4 Blatt (2 Seiten), keine Kopien und keine Ausdrucke erlaubt!
+	\item Es können maximal 100 Punkte erreicht werden.
+\end{itemize}
+
+\vspace{.3cm}
+
+Ich habe die Anweisungen zur Kenntnis genommen und die Angabe auf Vollständigkeit überprüft.
+\vspace{.8cm}
+
+
+\[\stackrel{.........................................................................................................}{\text{Name}}\] 
+\vspace{0.8cm}
+\[ \stackrel{.........................................................................................................}{\text{Studiengang/Fachsemester}} \]
+\vspace{0.8cm}
+\[ \stackrel{...............................................}{\text{Matrikelnummer}} \qquad \stackrel{...............................................}{\text{Unterschrift}}\]
+
+
+\vspace{.6cm}
+
+\begin{center}
+\Large
+\begin{tabular}{r|l|l|l|l|l|l|l}
+
+Aufgabe & ~~1~~ & ~~2~~ & ~~3~~ & ~~4~~ & ~~5~~& ~~6~~ &  ~~ $\sum$ ~~ \\ 
+  \hline
+Punkte  &       &       &       &    & & &
+\end{tabular}
+\end{center}
+
+
+\vspace{0.2cm}
+\flushright{\textbf{Viel Erfolg!!}}
+
+
+\newpage
+\setcounter{page}{1}
+
+% \bigskip
+% %% =========================
+% %% begin Aufgabe 1
+% %% =========================
+% \begin{Exercise}[20 Punkte]  
+
+% Gegeben sei das multiple lineare Regressionsmodell in Matrixschreibweise, 
+% \[ \boldsymbol{y} = \boldsymbol{X \beta} + \boldsymbol{u}, \]
+
+% mit allen klassischen Annahmen.
+
+% \begin{enumerate}
+% \renewcommand{\labelenumi}{(\alph{enumi})}
+% %\addtocounter{enumi}{1}
+%     \item Sie beobachten die Werte $y_1, y_2, \ldots, y_6$ für die unabhängige Variable und $x_{11},\ldots,x_{16}$ sowie  $x_{21},\ldots,x_{26}$ für zwei Regressoren $x_1$ und $x_2$. Schreiben Sie mit diesen Werten das Modell in Matrixform \emph{explizit} auf. [6 Punkte]		
+    
+% \begin{spaces}
+% \vspace{1cm}
+% %\vspace{8cm}
+% \end{spaces}
+% 		\item Zeigen Sie, dass 
+% 		\[ \hat{\boldsymbol{\beta}}_{KQ} = (\boldsymbol{X}'\boldsymbol{X})^{-1} \boldsymbol{X}'\boldsymbol{y} \]
+% 		ein erwartungstreuer Schätzer des wahren Parameters $\boldsymbol{\beta}$ ist. Erläutern Sie kurz, welche der Modellannahmen hierfür entscheidend ist. [6 Punkte]
+		
+% \begin{spaces}
+% \vspace{1cm}
+% % \vspace{8cm}
+% \end{spaces}
+
+% 		\item Zeigen Sie: $\boldsymbol{\Sigma}_{\boldsymbol{\hat{\beta}}_{KQ}} = \sigma^2(\boldsymbol{X}'\boldsymbol{X})^{-1}$ !  [8 Punkte]
+% 		% \[ y_i = \beta_0 + \beta_1 z_{1i} + \beta_2 z_{2i} + u_i, \]
+% 		% wobei
+% 		% \begin{align*}
+% 		% z_{1i} &= \begin{cases} 1, &\text{falls } x_i = \text{weiblich}, \\ 0, &\text{falls } x_i = \text{männlich},  \end{cases} \\
+% 		% z_{2i} &= \begin{cases} 1, &\text{falls } x_i = \text{männlich}, \\ 0, &\text{falls } x_i = \text{weiblich},  \end{cases}
+% 		% \end{align*}
+% 		% wobei Sie Daten über $n=1632$ Personen vorliegen haben. \\Welches Problem ergibt sich bei der Schätzung dieses Modells, und wie können Sie es lösen? [4 Punkte]
+
+
+% 		% \item Sie untersuchen das Einkommen $y_i$ in Abhängigkeit vom Geschlecht $x_i$ mit Hilfe eines linearen Regressionsmodells der Form
+% 		% \[ y_i = \beta_0 + \beta_1 z_{1i} + \beta_2 z_{2i} + u_i, \]
+% 		% wobei
+% 		% \begin{align*}
+% 		% z_{1i} &= \begin{cases} 1, &\text{falls } x_i = \text{weiblich}, \\ 0, &\text{falls } x_i = \text{männlich},  \end{cases} \\
+% 		% z_{2i} &= \begin{cases} 1, &\text{falls } x_i = \text{männlich}, \\ 0, &\text{falls } x_i = \text{weiblich},  \end{cases}
+% 		% \end{align*}
+% 		% wobei Sie Daten über $n=1632$ Personen vorliegen haben. \\Welches Problem ergibt sich bei der Schätzung dieses Modells, und wie können Sie es lösen? [4 Punkte]
+% % \begin{spaces}
+% % \vspace{1cm}
+% % \end{spaces}
+
+% % 		\item Wie lautet der Schätzfehler des $i$-ten geschätzten Regressionsparameters $\hat{\beta}_i$ ? [2 Punkte]
+
+% \end{enumerate}
+
+% \end{Exercise}
+% %%end Aufgabe 1
+
+
+% \bigskip
+
+%%=================
+%%begin Aufgabe 2
+%%=================
+\begin{Exercise}[30 Punkte]  $~$ \\ 
+
+Die zwei Stromversorger \textit{Äon} und \textit{Wattenfall} teilen
+sich die gesamte Angebotsseite des Elektrizitätsmarktes der
+\textit{Vereinigten Staaten von Iranium}, d.h. sie bilden ein
+sogenanntes Duopol. \textit{Äon} möchte die Strommenge
+prognostizieren, die es in 2006 absetzen wird, und unterstellt zu
+diesem Zwecke, dass seine abgesetzte Strommenge vom verfügbaren
+realen Pro-Kopf-Einkommen der privaten Haushalte und seinem
+Angebotspreis abhängt. Unter der zusätzlichen Annahme eines linearen
+funktionalen Zusammenhangs lautet die Modellspezifikation
+\begin{equation}\label{eq:Regressionsgleichung1}
+   y_t=\beta_1x_{t1}+\beta_2x_{t2}+u_t
+   \; ,
+\end{equation}
+mit
+\begin{eqnarray*}
+   y_t    & = & \mbox{abgesetzte Strommenge (in Mio. kWh)}\\
+   x_{t1} & = & \mbox{verfügbares reales Pro-Kopf-Einkommen (in Tsd. \$)}\\
+   x_{t2} & = & \mbox{Angebotspreis von \textit{Äon} (in \$ pro kWh)}
+   \; .
+\end{eqnarray*}
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+
+Alle Daten sind mittelwertbereinigt und auf Jahresbasis von 1973 bis
+2005 erhoben worden, d.h. $t=1,\ldots,33$. Diese Daten sind in den
+folgenden Produktsummen zusammengefasst:
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+
+\[
+   \begin{array}{lll}
+   \sum^{33}_{t=1}x_{t1}x_{t2}=22,19 & \sum^{33}_{t=1}x_{t2}y_t=22,99 & \sum^{33}_{t=1}y^2_t=505,92\\
+   \sum^{33}_{t=1}x_{t1}y_t=345,42 & \sum^{33}_{t=1}x^2_{t1}=268,02 & \sum^{33}_{t=1}x^2_{t2}=226,00
+   \end{array}
+\]
+
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+	\item 
+              Zeigen Sie, dass der KQ-Schätzer ${\hat{\beta}}_{KQ}$ die Orthogonalitätsbedingung
+              ${X}'{\hat{u}}={0}$ erfüllt, und interpretieren Sie diese Orthogonalitätsbedingung.
+              Zeigen Sie außerdem, dass der KQ-Schätzer des Modells (\ref{eq:Regressionsgleichung1})
+              gleich den entsprechenden Elementen des KQ-Schätzers des Modells
+              \begin{equation}\label{eq:Regressionsgleichung2}
+                 y_t=\beta_0+\beta_1x_{t1}+\beta_2x_{t2}+u_t
+              \end{equation}
+              ist, wobei die Variablen in (\ref{eq:Regressionsgleichung2}) nicht mittelwertbereinigt,
+              sondern Rohdaten sind. Wie würden Sie $\hat{\beta}_0$ nach der Schätzung von Modell
+              (\ref{eq:Regressionsgleichung1}) berechnen? [7 Punkte]
+	\begin{spaces}
+        \vspace{1cm}
+        \end{spaces}
+
+	\item 
+              Schätzen Sie $\beta_1$ und $\beta_2$. Sind die Vorzeichen der
+              geschätzten Regressionsparameter $\hat{\beta}_1$ und $\hat{\beta}_2$ ökonomisch
+              plausibel? [7 Punkte]
+	\begin{spaces}
+        \vspace{1cm}
+        \end{spaces}
+
+	\item 
+              Berechnen Sie $\hat{\sigma}^2=\frac{{\hat{u}}'{\hat{u}}}{T-k-1}$, wobei $k$
+              der Anzahl der zu schätzenden Parameter in (\ref{eq:Regressionsgleichung1})
+              entspricht. Geben Sie einen ausf\"{u}hrlichen Rechenweg an! 
+              Erklären Sie, wieso die korrekte Anzahl der Freiheitsgrade für das Modell
+              (\ref{eq:Regressionsgleichung1}) nicht $T-k$, sondern $T-(k+1)$ ist. Welche Rolle spielt hierbei
+              die Dimension der Orthogonalitätsbedingung? [5 Punkte]
+        \begin{spaces}
+        \vspace{1cm}
+        \end{spaces}
+       \item
+         Berechnen Sie die Punktprognose $\hat{y}_P$ und das dazugehörige
+        95\%-Prognoseintervall für 2006 unter der Annahme, dass $x_{P1}=1,5$ und $x_{P2}=1,0$. Verwenden Sie dabei $ \hat{\sigma}^2_{P} = 2,3088$ und $(T-k-1)$ Freiheitsgrade. 
+        Geben Sie einen ausf\"{u}hrlichen Rechenweg an! [7 Punkte]
+       \begin{spaces}
+       \vspace{1cm}
+       \end{spaces}
+       \item
+       Angenommen, die tatsächliche Realisation der abgesetzten Strommenge in 2006 betrüge
+       $y_P=-1,25$. Wie beurteilen Sie die Prognosegüte des geschätzten Modells? Nennen Sie eine m\"{o}gliche
+       Ursache hierfür. [4 Punkte]
+       \begin{spaces}
+       \vspace{1cm}
+       \end{spaces}
+\end{enumerate}
+\end{Exercise}
+%% end exercise 2
+
+
+\bigskip
+% ==================
+%% begin Aufgabe 3
+% ==================
+\begin{Exercise}[30 Punkte]
+Die Kartellbehörde von \textit{Iranium} möchte das Treiben auf dem
+nationalen Elektrizitätsmarkt untersuchen und erweitert zu diesem
+Zwecke die Absatzfunktion (\ref{eq:Regressionsgleichung1}) von
+\textit{Äon} um den Regressor $x_{t3}$, der dem Angebotspreis von
+\textit{Wattenfall} (in \$ pro kWh) entspricht:
+\begin{equation}\label{eq:Regressionsgleichung3}
+   y_t=\beta_1x_{t1}+\beta_2x_{t2}+\beta_3x_{t3}+u_t
+   \; .
+\end{equation}
+Unter den Angaben aus der Aufgabenstellung von {\bf Aufgabe 2} und
+den zusätzlichen Informationen
+\[
+   \begin{array}{ccc}
+   \sum^{33}_{t=1}x_{t1}x_{t3}=22,25 & \sum^{33}_{t=1}x_{t2}x_{t3}=226,39 &
+   \sum^{33}_{t=1}x_{t3}^2=227,04
+   \end{array}
+\]
+wurde das Modell (\ref{eq:Regressionsgleichung3}) nach der
+KQ-Methode geschätzt:
+\begin{center}
+              \renewcommand{\arraystretch}{1.2}% widens distance between rows
+              \begin{tabular}{l|ccc}
+                                             & $\beta_1$ & $\beta_2$ & $\beta_3$\\ \hline
+              $\hat{\beta}_i$                & 1,2909 & 0,1577 & -0,1824\\
+              $\hat{\sigma}_{\hat{\beta}_i}$ & 0,0887 & 2,7615 & 2,7552\\
+              \end{tabular}
+              \renewcommand{\arraystretch}{0.85}% shortens distance between rows
+\end{center}
+und
+\[
+   \hat{\sigma}^2=\frac{{\hat{u}}'{\hat{u}}}{T-k-1}=2,0896
+   \; .
+\]
+
+
+\begin{enumerate}
+\renewcommand{\labelenumi}{(\alph{enumi})}
+
+\item
+              Begründen Sie kurz, warum das von der Kartellbehörde geschätzte Modell
+              (\ref{eq:Regressionsgleichung3}), ökonomisch gesehen, vermutlich eine bessere
+              Spezifikation sein wird als das von \textit{Äon} geschätzte Modell
+              (\ref{eq:Regressionsgleichung1}). [2 Punkte]
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+\item         Zeigen Sie, welche Auswirkungen die Schätzung von (\ref{eq:Regressionsgleichung1})
+              auf die Erwartungstreue des KQ-Schätzers hätte, wenn (\ref{eq:Regressionsgleichung3})
+              das korrekt spezifizierte Modell darstellen würde. Beschreiben Sie kurz, welche
+              Auswirkungen die Schätzung von (\ref{eq:Regressionsgleichung1}) auf Hypothesentests,
+              Punktprognose und Prognoseintervalle hätte, wenn (\ref{eq:Regressionsgleichung3})
+              das korrekt spezifizierte Modell darstellen würde. [7 Punkte]
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+     
+
+
+\item         Testen Sie mittels $t$-Test und zum Signifikanzniveau 5\%, ob die Regressionsparameter
+              in (\ref{eq:Regressionsgleichung3}) einzeln signifikant von 0 verschieden sind. Testen
+              Sie mittels $F$-Test und zum Signifikanzniveau 5\% mit kritischem Wert $F_{krit}=2,701$,
+              ob die Regressionsparameter in (\ref{eq:Regressionsgleichung3}) gemeinsam signifikant
+              von 0 verschieden sind. Berechnen und interpretieren Sie das multiple Bestimmtheitsmaß
+              $R^2$. [16 Punkte]  
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+\item
+              Betrachten Sie Ihre Ergebnisse aus Aufgabe 2c. Welches Problem liegt offenbar für die
+              in Modell (\ref{eq:Regressionsgleichung3}) verwendete Regressormatrix vor? Erklären Sie
+              kurz, wie diese Symptome zustande kommen. [5 Punkte]
+\begin{spaces}
+\vspace{8cm}
+\end{spaces}
+
+\end{enumerate}
+\end{Exercise}
+%% end exercise 3
+
+
+\bigskip
+
+\newpage
+
+%%  %% begin Exercise 4
+% \begin{Exercise}[20 Punkte] $~$ \\ 
+% \begin{enumerate}[(a)]
+% \item Geben sie eine allgemeine $3 \times 3$ Varianz-Kovarianzmatrix $\boldsymbol{\Sigma}_u$ für folgende Annahmen für den Fehlerterm $u$ an:
+% \begin{enumerate}[(i)]
+% 	\item homoskedastische, unkorrelierte Fehler
+% 	\item heteroskedastische, unkorrelierte Fehler
+% 	\item heteroskedastische, autokorrelierte Fehler
+% \end{enumerate}
+% [5 Punkte]
+% \begin{spaces}
+% \vspace{5cm}
+% \end{spaces}	
+
+% \item 
+
+% % \item Sämtliche $n$ TeilnehmerInnen einer Klausur zur Veranstaltung "`empirische Theologie"' sitzen kreisförmig hintereinander, und zwar leicht versetzt, so dass Abschreiben von der Vorderperson möglich ist. Nehmen Sie nun an, Sie möchten das Prüfungsergebnis $y_i$ (Anzahl Punkte), der Personen durch diversen Kovariablen $x_{ki}$ (z.B. Geschlecht,  Familienstand, Einkommen, Geburtsmonat) erklären. \\ Erläutern Sie, welche Struktur des Störterms Sie unterstellen, und wie Sie dies zur Verbesserung der Schätzung des Parametervektors nutzen können. [9 Punkte]
+
+% \begin{spaces}
+% \vspace{1cm}
+% \end{spaces}	
+
+% \end{enumerate}
+% \end{Exercise}
+
+% % %% end Exercise 4
+
+% ===========================
+% begin Aufgab 3
+% ===========================
+\begin{Exercise}[15 Punkte] $~$ \\ 
+F\"{u}r eine Stichprobe von Querschnittsdaten wird die Regressionsgleichung
+ \[
+           y_n=\beta_1+\beta_2x_{n2}+\beta_3x_{n3}+u_n
+           \qquad\text{mit}\quad n=1,\ldots,300
+           \]
+           geschätzt. Werden die aus der KQ-Schätzung resultierenden Residuen
+           $\hat{u}_n$ gegen die entsprechenden Werte der Projektion $\hat{y}_n$
+           abgetragen, erhält man folgende Abbildung: 
+
+% Stromversorger \textit{Wattenfall} möchte genauer untersuchen, wie
+% bestimmte Faktoren die Strommenge, die einzelne private Haushalte
+% nachfragen, beeinflussen. Zu diesem Zwecke wurde eine Stichprobe von
+% Querschnittsdaten 300 repräsentativer Haushalte erhoben.
+% \textit{Wattenfall} nimmt an, dass die von Haushalt $i$ nachgefragte
+% jährliche Strommenge (in kWh) $y_i$ vom jährlichen, realen
+% Gesamteinkommen des Haushalts (in Tsd. \$) $x_{i2}$ abhängt, und
+% spezifiziert folgendes Regressionsmodell:
+% \begin{equation}\label{eq:Regressionsgleichung4}
+%    y_i=\beta_1+\beta_2x_{i2}+u_i
+%    \qquad\mbox{mit}\quad
+%    i=1,\ldots,300
+%    \; .
+% \end{equation}
+% Nach Schätzung des Modells (\ref{eq:Regressionsgleichung4}) mittels
+% der KQ-Methode ergibt sich folgendes Tukey-Anscombe Diagramm:
+
+\begin{figure}[h!]
+              \begin{center}
+              \includegraphics[width=9cm,height=6cm]{fig1}
+              \end{center}
+\end{figure}
+
+
+\begin{enumerate}[(a)]
+
+\item Um welche Art von Streudiagramm handelt es sich bei dieser Abbildung? (Name!). Welche Annahme des klassischen linearen Regressionsmodells ist vermutlich verletzt? \mbox{[2 Punkte]}
+
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+
+\item Nennen Sie ein geeignetes Verfahren, um Ihre Vermutung zu testen! \mbox{1 Punkt]}
+              % Welche Probleme entstehen, wenn man (\ref{eq:Regressionsgleichung4}) nach der
+              % gewöhnlichen KQ-Methode mit ${\hat{\beta}}_{KQ}$ und
+              % ${\Sigma}_{{\hat{\beta}}_{KQ}}=\sigma^2({X}'{X})^{-1}$schätzt? Zeigen Sie,
+              % dass, für $[{u}{u}']={\Sigma}=\sigma^2{\Omega}\not=\sigma^2{I}_T$,
+              % \[
+              %    \hat{\sigma}^2_{KQ}=\frac{{\hat{u}}'{\hat{u}}}{T-k}
+              % \]
+              % ein verzerrter Schätzer ist.\hfill{\bf\fbox{10 Punkte}}
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+\end{enumerate}
+
+
+ Für eine Stichprobe aus Querschnittsdaten wird die Regressionsgleichung
+           \[
+           y_n=\beta_1+\beta_2x_{n2}+\beta_3x_{n3}+u_n
+           \]
+           mit $n=1,\ldots,76$ geschätzt. Nach der Durchf\"{u}hrung einer grafischen Analyse liegt die Vermutung nahe, dass sich die Beobachtungen der Querschnittsdaten in zwei Gruppen mit
+           unterschiedlicher Störgrößenvarianz unterteilen lassen. Die Variable $\bm{x}_3$ erscheint
+           dabei als die sog. \textit{Threshold-Variable} zu fungieren. 
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+\begin{enumerate}[(c)]
+   
+         
+\item Welcher Test ist geeignet, um diese Vermutung zu \"{u}berpr\"{u}fen? Wie ist der Test konstruiert? Gehen Sie bei Ihrer Antwort auch auf die Hypothesen, die Teststatistik mit deren Verteilung unter $H_{0}$ und die Entscheidungsregel ein. \mbox{[5 Punkt]}
+
+
+% \item
+%               Welche Probleme bestehen bei der empirischen Operationalisierung von
+%               ${\hat{\beta}}_{VKQ}$ durch ${\hat{\beta}}_{EVKQ}$, wenn ${\Sigma}$ unbekannt ist.
+%               Welche Alternative zu ${\hat{\beta}}_{EVKQ}$ kennen Sie, um die Parameter in
+%               (\ref{eq:Regressionsgleichung4}) konsistent zu schätzen und valide Testverfahren zu
+%               erhalten?
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+\item [(d)] Führen Sie den unter Teilaufgabe (c) genannten Test zum Signifikanzniveau 5\% mit
+           $\bm{\hat{u}}_1'\bm{\hat{u}}_1=0.0102$ für $n=1,\ldots,33$ und $\bm{\hat{u}}_2'\bm{\hat{u}}_2
+           =0.0428$ für $n=34,\ldots,76$ durch. \mbox{[7 Punkte]}
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+\end{enumerate}
+
+\end{Exercise}
+% end Aufgabe 4
+
+\newpage
+%%=================
+%% Aufgabe 4
+%%=================
+
+\begin{Exercise}[15 Punkte]  $~$ \\ 
+
+\begin{itemize}
+
+     
+\item [(a)] Leiten Sie die ersten beiden Momente des verallgemeinerten KQ-Schätzers
+           $\bm{\hat{\beta}}_{VKQ}$ her, wenn im klassischen linearen Regressionsmodell
+           $\bm{y}=\bm{X}\bm{\beta}+\bm{u}$ für die Kovarianzmatrix der Störgrößen
+           $\E{\bm{u}\bm{u}'}=\sigma^2\bm{\Omega}$ statt $\E{\bm{u}\bm{u}'}=\sigma^2\bm{I}_T$ gilt! [10 Punkte]
+
+
+
+\item [(b)]Geben sie eine allgemeine $3 \times 3$ Varianz-Kovarianzmatrix $\boldsymbol{\Sigma}_u$ für folgende Annahmen an: 
+\begin{enumerate}[(i)]
+	\item homoskedastische, unkorrelierte Fehler
+	\item heteroskedastische, unkorrelierte Fehler
+\end{enumerate}
+[5 Punkte]
+	
+
+
+\end{itemize}
+\end{Exercise}
+
+\bigskip
+
+% ==============
+
+
+% \begin{Exercise}[20 Punkte] $~$ \\ 
+% Sind folgende Aussagen wahr (W) oder falsch (F)?
+% \begin{enumerate}
+% \item Das korrigierte Bestimmtheitsma\ss \  $\bar{R}_{2}$  kann auch negative Werte annehmen 
+% \item Der F-Test erlaubt es, Hypothesen bez\"{u}glich mehrerer oder gar alle Elemente des Regressionskoeffizientenvektors $\boldsymbol{\beta}$ zu testen
+% \item Im Falle imperfekter Multikollinearit\"{a}t ist $\boldsymbol{X'X}$ nicht exakt, aber beinahe singul\"{a}r
+% \item Multikollinearit\"{a}t f\"{u}hrt zu einer aufgebl\"{a}hten Kovarianzmatrix der KQ-gesch\"{a}tzten Regressionskoeffizienten
+% \item Der Ridge-Regressionssch\"{a}tzer ist wie folgt definiert: $\hat{\boldsymbol{\beta}}_{Ridge} = \boldsymbol{(X'X + D)^{-1}X'y}$
+% \item Der Hausmann-Test pr\"{u}ft das Vorhandensein von fehlerbehafteten Regressoren
+% \item Der Aitken-Sch\"{a}tzer ist ein best, linear, unbiased estimator
+% \item Der White-Test testet, ob die Streuung der St\"{o}rgr\"{o}\ss en von Regressorvariablen abh\"{a}ngen
+% \item Der Ljung-Box-Test gilt nicht, wenn sich verz\"{o}gerte abh\"{a}ngige Variablen unter den Regressoren befinden
+% \item Beim Vorliegen autokorrelierter St\"{o}rgr\"{o}\ss en ist der KQ-Sch\"{a}tzer zwar unverzerrt, jedoch weder konsistent noch ineffizient
+% \end{enumerate}
+% \end{Exercise}
+
+% \begin{Exercise}[20 Punkte] $~$ \\ 
+% Sind folgende Aussagen wahr (W) oder falsch (F)? \\ 
+% \begin{tabular}{L{15cm}C{3cm}l}
+%  Das korrigierte Bestimmtheitsma\ss \  $\bar{R}_{2}$  kann auch negative Werte annehmen. & ( ) & \\[3ex]
+%  Der F-Test erlaubt es, Hypothesen bez\"{u}glich mehrerer oder gar alle Elemente des Regressionskoeffizientenvektors $\boldsymbol{\beta}$ zu testen. & ( ) &  \\[3ex]
+%  Im Falle imperfekter Multikollinearit\"{a}t ist $\boldsymbol{X'X}$ nicht exakt, aber beinahe singul\"{a}r. & ( ) & \\[3ex]
+%  Multikollinearit\"{a}t f\"{u}hrt zu einer aufgebl\"{a}hten Kovarianzmatrix der KQ-gesch\"{a}tzten Regressionskoeffizienten. & ( ) & \\[3ex]
+%  Der Ridge-Regressionssch\"{a}tzer ist wie folgt definiert: $\hat{\boldsymbol{\beta}}_{Ridge} = \boldsymbol{(X'X + D)^{-1}X'y}$. & ( ) & \\[3ex]
+%  Der Hausmann-Test pr\"{u}ft das Vorhandensein von fehlerbehafteten Regressoren. & ( ) & \\[3ex]
+%  Der Aitken-Sch\"{a}tzer ist ein \emph{best, linear, unbiased estimator}. & ( ) & \\[3ex]
+%  Der White-Test testet, ob die Streuung der St\"{o}rgr\"{o}\ss en von Regressorvariablen abh\"{a}ngen. & ( ) & \\[3ex]
+%  Der Ljung-Box-Test gilt nicht, wenn sich verz\"{o}gerte abh\"{a}ngige Variablen unter den Regressoren befinden. & ( ) &\\[3ex]
+%  Beim Vorliegen autokorrelierter St\"{o}rgr\"{o}\ss en ist der KQ-Sch\"{a}tzer zwar unverzerrt, jedoch weder konsistent noch ineffizient. & ( ) & \\[3ex]
+% \end{tabular}
+% \end{Exercise}
+
+
+\begin{Exercise}[10 Punkte] $~$ \\ 
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+
+Sind folgende Aussagen wahr (W) oder falsch (F)? \\ 
+
+\begin{spaces}
+\vspace{1cm}
+\end{spaces}
+
+
+
+\begin{tabular}{L{13cm}C{3cm}l}
+ & & \\
+ Das Bestimmtheitsma\ss \  $R^{2}$  kann auch negative Werte annehmen. & ( \ \ ) & \\
+ & & \\
+ Perfekte Multikollinearit\"{a}t f\"{u}hrt zu einer aufgebl\"{a}hten Kovarianzmatrix der KQ-gesch\"{a}tzten Regressionskoeffizienten. & ( \ \ ) & \\
+ & & \\
+ Beim Vorliegen von Heteroskedastizit\"{a}t ist der KQ-Sch\"{a}tzer zwar verzerrt, aber konsistent. & ( \ \ ) & \\
+ & & \\
+ Der verallgemeinerte KQ-Sch\"{a}tzer $\hat{\boldsymbol{\beta}}_{VKQ}$ ist ein \emph{best, linear, unbiased estimator}. & ( \ \ ) & \\
+ & & \\
+ Die Sch\"{a}tzfehler von $\hat{\boldsymbol{\beta}}_{KQ}$ sind nicht kleiner als die von $\hat{\boldsymbol{\beta}}_{VKQ}$ . & ( \ \ ) & \\
+ & & \\
+ Das BIC hat einen gewichtigeren Strafterm als das AIC.  & ( \ \ ) & \\
+ & & \\
+ Der White-Test testet, ob die Streuung der St\"{o}rgr\"{o}\ss en von Regressorvariablen abh\"{a}ngen. & ( \ \ ) & \\
+ & & \\
+ Der Ljung-Box-Test gilt nicht, wenn sich verz\"{o}gerte abh\"{a}ngige Variablen unter den Regressoren befinden. & ( \ \ ) &\\
+ & & \\
+ Wird $\hat{\boldsymbol{\beta}}_{KQ}$ zur Sch\"{a}tzung der Regressionskoeffizienten eines linearen Modells mit autokorrelierten 
+ St\"{o}rgr\"{o}\ss en verwendet, so ist dieser  zwar unverzerrt, jedoch inkonsistent und ineffizient. & ( \ \ ) & \\
+ & & \\
+ Der Durbin-Watson Test ist nur f\"{u}r das Testen auf Autokorrelation erster Ordnung angelegt. & ( \ \ ) &\\
+
+\end{tabular}
+\end{Exercise}
+
+
+\clearpage
+\newpage
+
+\section*{Verteilungstabellen}
+
+% latex table generated in R 2.12.0 by xtable 1.5-6 package
+% Fri Feb 03 11:44:29 2012
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrrr}
+  \hline
+Freiheitsgrade & $\alpha=0.9$ & $\alpha=0.95$ & $\alpha$=0.975 & $\alpha=0.99$ & $\alpha=0.995$ \\ 
+  \hline
+    1 & 3.0777 & 6.3138 & 12.7062 & 31.8205 & 63.6567 \\ 
+      2 & 1.8856 & 2.9200 & 4.3027 & 6.9646 & 9.9248 \\ 
+      3 & 1.6377 & 2.3534 & 3.1824 & 4.5407 & 5.8409 \\ 
+      4 & 1.5332 & 2.1318 & 2.7764 & 3.7469 & 4.6041 \\ 
+      5 & 1.4759 & 2.0150 & 2.5706 & 3.3649 & 4.0321 \\ 
+      6 & 1.4398 & 1.9432 & 2.4469 & 3.1427 & 3.7074 \\ 
+      7 & 1.4149 & 1.8946 & 2.3646 & 2.9980 & 3.4995 \\ 
+      8 & 1.3968 & 1.8595 & 2.3060 & 2.8965 & 3.3554 \\ 
+      9 & 1.3830 & 1.8331 & 2.2622 & 2.8214 & 3.2498 \\ 
+     10 & 1.3722 & 1.8125 & 2.2281 & 2.7638 & 3.1693 \\ 
+     11 & 1.3634 & 1.7959 & 2.2010 & 2.7181 & 3.1058 \\ 
+     12 & 1.3562 & 1.7823 & 2.1788 & 2.6810 & 3.0545 \\ 
+     13 & 1.3502 & 1.7709 & 2.1604 & 2.6503 & 3.0123 \\ 
+     14 & 1.3450 & 1.7613 & 2.1448 & 2.6245 & 2.9768 \\ 
+     15 & 1.3406 & 1.7531 & 2.1314 & 2.6025 & 2.9467 \\ 
+     16 & 1.3368 & 1.7459 & 2.1199 & 2.5835 & 2.9208 \\ 
+     17 & 1.3334 & 1.7396 & 2.1098 & 2.5669 & 2.8982 \\ 
+     18 & 1.3304 & 1.7341 & 2.1009 & 2.5524 & 2.8784 \\ 
+     19 & 1.3277 & 1.7291 & 2.0930 & 2.5395 & 2.8609 \\ 
+     20 & 1.3253 & 1.7247 & 2.0860 & 2.5280 & 2.8453 \\ 
+     21 & 1.3232 & 1.7207 & 2.0796 & 2.5176 & 2.8314 \\ 
+     22 & 1.3212 & 1.7171 & 2.0739 & 2.5083 & 2.8188 \\ 
+     23 & 1.3195 & 1.7139 & 2.0687 & 2.4999 & 2.8073 \\ 
+     24 & 1.3178 & 1.7109 & 2.0639 & 2.4922 & 2.7969 \\ 
+     25 & 1.3163 & 1.7081 & 2.0595 & 2.4851 & 2.7874 \\ 
+     26 & 1.3150 & 1.7056 & 2.0555 & 2.4786 & 2.7787 \\ 
+     27 & 1.3137 & 1.7033 & 2.0518 & 2.4727 & 2.7707 \\ 
+     28 & 1.3125 & 1.7011 & 2.0484 & 2.4671 & 2.7633 \\ 
+     29 & 1.3114 & 1.6991 & 2.0452 & 2.4620 & 2.7564 \\ 
+     30 & 1.3104 & 1.6973 & 2.0423 & 2.4573 & 2.7500 \\ 
+     31 & 1.3095 & 1.6955 & 2.0395 & 2.4528 & 2.7440 \\ 
+     32 & 1.3086 & 1.6939 & 2.0369 & 2.4487 & 2.7385 \\ 
+     33 & 1.3077 & 1.6924 & 2.0345 & 2.4448 & 2.7333 \\ 
+     34 & 1.3070 & 1.6909 & 2.0322 & 2.4411 & 2.7284 \\ 
+     35 & 1.3062 & 1.6896 & 2.0301 & 2.4377 & 2.7238 \\ 
+     36 & 1.3055 & 1.6883 & 2.0281 & 2.4345 & 2.7195 \\ 
+     37 & 1.3049 & 1.6871 & 2.0262 & 2.4314 & 2.7154 \\ 
+     38 & 1.3042 & 1.6860 & 2.0244 & 2.4286 & 2.7116 \\ 
+     39 & 1.3036 & 1.6849 & 2.0227 & 2.4258 & 2.7079 \\ 
+     40 & 1.3031 & 1.6839 & 2.0211 & 2.4233 & 2.7045 \\ 
+   \hline
+\end{tabular}
+\caption{Quantile der t-Verteilung.}
+\end{center}
+\end{table}
+\newpage
+
+% latex table generated in R 2.12.0 by xtable 1.5-6 package
+% Thu Jan 27 15:29:53 2011
+\begin{sidewaystable}%[ht]
+\begin{center}
+\begin{tabular}{rrrrrrrrrrrrrrrrr}
+  \hline
+$v_2$/$v_1$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 12 & 15 & 20 & 25 & 30 & 40 \\ 
+  \hline
+  1 & 161.448 & 199.500 & 215.707 & 224.583 & 230.162 & 233.986 & 236.768 & 238.883 & 240.543 & 241.882 & 243.906 & 245.950 & 248.013 & 249.260 & 250.095 & 251.143 \\ 
+  2 & 18.513 & 19.000 & 19.164 & 19.247 & 19.296 & 19.330 & 19.353 & 19.371 & 19.385 & 19.396 & 19.413 & 19.429 & 19.446 & 19.456 & 19.462 & 19.471 \\ 
+  3 & 10.128 & 9.552 & 9.277 & 9.117 & 9.013 & 8.941 & 8.887 & 8.845 & 8.812 & 8.786 & 8.745 & 8.703 & 8.660 & 8.634 & 8.617 & 8.594 \\ 
+  4 & 7.709 & 6.944 & 6.591 & 6.388 & 6.256 & 6.163 & 6.094 & 6.041 & 5.999 & 5.964 & 5.912 & 5.858 & 5.803 & 5.769 & 5.746 & 5.717 \\ 
+  5 & 6.608 & 5.786 & 5.409 & 5.192 & 5.050 & 4.950 & 4.876 & 4.818 & 4.772 & 4.735 & 4.678 & 4.619 & 4.558 & 4.521 & 4.496 & 4.464 \\ 
+  6 & 5.987 & 5.143 & 4.757 & 4.534 & 4.387 & 4.284 & 4.207 & 4.147 & 4.099 & 4.060 & 4.000 & 3.938 & 3.874 & 3.835 & 3.808 & 3.774 \\ 
+  7 & 5.591 & 4.737 & 4.347 & 4.120 & 3.972 & 3.866 & 3.787 & 3.726 & 3.677 & 3.637 & 3.575 & 3.511 & 3.445 & 3.404 & 3.376 & 3.340 \\ 
+  8 & 5.318 & 4.459 & 4.066 & 3.838 & 3.687 & 3.581 & 3.500 & 3.438 & 3.388 & 3.347 & 3.284 & 3.218 & 3.150 & 3.108 & 3.079 & 3.043 \\ 
+  9 & 5.117 & 4.256 & 3.863 & 3.633 & 3.482 & 3.374 & 3.293 & 3.230 & 3.179 & 3.137 & 3.073 & 3.006 & 2.936 & 2.893 & 2.864 & 2.826 \\ 
+  10 & 4.965 & 4.103 & 3.708 & 3.478 & 3.326 & 3.217 & 3.135 & 3.072 & 3.020 & 2.978 & 2.913 & 2.845 & 2.774 & 2.730 & 2.700 & 2.661 \\ 
+  11 & 4.844 & 3.982 & 3.587 & 3.357 & 3.204 & 3.095 & 3.012 & 2.948 & 2.896 & 2.854 & 2.788 & 2.719 & 2.646 & 2.601 & 2.570 & 2.531 \\ 
+  12 & 4.747 & 3.885 & 3.490 & 3.259 & 3.106 & 2.996 & 2.913 & 2.849 & 2.796 & 2.753 & 2.687 & 2.617 & 2.544 & 2.498 & 2.466 & 2.426 \\ 
+  13 & 4.667 & 3.806 & 3.411 & 3.179 & 3.025 & 2.915 & 2.832 & 2.767 & 2.714 & 2.671 & 2.604 & 2.533 & 2.459 & 2.412 & 2.380 & 2.339 \\ 
+  14 & 4.600 & 3.739 & 3.344 & 3.112 & 2.958 & 2.848 & 2.764 & 2.699 & 2.646 & 2.602 & 2.534 & 2.463 & 2.388 & 2.341 & 2.308 & 2.266 \\ 
+  15 & 4.543 & 3.682 & 3.287 & 3.056 & 2.901 & 2.790 & 2.707 & 2.641 & 2.588 & 2.544 & 2.475 & 2.403 & 2.328 & 2.280 & 2.247 & 2.204 \\ 
+  16 & 4.494 & 3.634 & 3.239 & 3.007 & 2.852 & 2.741 & 2.657 & 2.591 & 2.538 & 2.494 & 2.425 & 2.352 & 2.276 & 2.227 & 2.194 & 2.151 \\ 
+  17 & 4.451 & 3.592 & 3.197 & 2.965 & 2.810 & 2.699 & 2.614 & 2.548 & 2.494 & 2.450 & 2.381 & 2.308 & 2.230 & 2.181 & 2.148 & 2.104 \\ 
+  18 & 4.414 & 3.555 & 3.160 & 2.928 & 2.773 & 2.661 & 2.577 & 2.510 & 2.456 & 2.412 & 2.342 & 2.269 & 2.191 & 2.141 & 2.107 & 2.063 \\ 
+  19 & 4.381 & 3.522 & 3.127 & 2.895 & 2.740 & 2.628 & 2.544 & 2.477 & 2.423 & 2.378 & 2.308 & 2.234 & 2.155 & 2.106 & 2.071 & 2.026 \\ 
+  20 & 4.351 & 3.493 & 3.098 & 2.866 & 2.711 & 2.599 & 2.514 & 2.447 & 2.393 & 2.348 & 2.278 & 2.203 & 2.124 & 2.074 & 2.039 & 1.994 \\ 
+  21 & 4.325 & 3.467 & 3.072 & 2.840 & 2.685 & 2.573 & 2.488 & 2.420 & 2.366 & 2.321 & 2.250 & 2.176 & 2.096 & 2.045 & 2.010 & 1.965 \\ 
+  22 & 4.301 & 3.443 & 3.049 & 2.817 & 2.661 & 2.549 & 2.464 & 2.397 & 2.342 & 2.297 & 2.226 & 2.151 & 2.071 & 2.020 & 1.984 & 1.938 \\ 
+  23 & 4.279 & 3.422 & 3.028 & 2.796 & 2.640 & 2.528 & 2.442 & 2.375 & 2.320 & 2.275 & 2.204 & 2.128 & 2.048 & 1.996 & 1.961 & 1.914 \\ 
+  24 & 4.260 & 3.403 & 3.009 & 2.776 & 2.621 & 2.508 & 2.423 & 2.355 & 2.300 & 2.255 & 2.183 & 2.108 & 2.027 & 1.975 & 1.939 & 1.892 \\ 
+  25 & 4.242 & 3.385 & 2.991 & 2.759 & 2.603 & 2.490 & 2.405 & 2.337 & 2.282 & 2.236 & 2.165 & 2.089 & 2.007 & 1.955 & 1.919 & 1.872 \\ 
+  26 & 4.225 & 3.369 & 2.975 & 2.743 & 2.587 & 2.474 & 2.388 & 2.321 & 2.265 & 2.220 & 2.148 & 2.072 & 1.990 & 1.938 & 1.901 & 1.853 \\ 
+  27 & 4.210 & 3.354 & 2.960 & 2.728 & 2.572 & 2.459 & 2.373 & 2.305 & 2.250 & 2.204 & 2.132 & 2.056 & 1.974 & 1.921 & 1.884 & 1.836 \\ 
+  28 & 4.196 & 3.340 & 2.947 & 2.714 & 2.558 & 2.445 & 2.359 & 2.291 & 2.236 & 2.190 & 2.118 & 2.041 & 1.959 & 1.906 & 1.869 & 1.820 \\ 
+  29 & 4.183 & 3.328 & 2.934 & 2.701 & 2.545 & 2.432 & 2.346 & 2.278 & 2.223 & 2.177 & 2.104 & 2.027 & 1.945 & 1.891 & 1.854 & 1.806 \\ 
+  30 & 4.171 & 3.316 & 2.922 & 2.690 & 2.534 & 2.421 & 2.334 & 2.266 & 2.211 & 2.165 & 2.092 & 2.015 & 1.932 & 1.878 & 1.841 & 1.792 \\ 
+  31 & 4.160 & 3.305 & 2.911 & 2.679 & 2.523 & 2.409 & 2.323 & 2.255 & 2.199 & 2.153 & 2.080 & 2.003 & 1.920 & 1.866 & 1.828 & 1.779 \\ 
+  32 & 4.149 & 3.295 & 2.901 & 2.668 & 2.512 & 2.399 & 2.313 & 2.244 & 2.189 & 2.142 & 2.070 & 1.992 & 1.908 & 1.854 & 1.817 & 1.767 \\ 
+  33 & 4.139 & 3.285 & 2.892 & 2.659 & 2.503 & 2.389 & 2.303 & 2.235 & 2.179 & 2.133 & 2.060 & 1.982 & 1.898 & 1.844 & 1.806 & 1.756 \\ 
+  34 & 4.130 & 3.276 & 2.883 & 2.650 & 2.494 & 2.380 & 2.294 & 2.225 & 2.170 & 2.123 & 2.050 & 1.972 & 1.888 & 1.833 & 1.795 & 1.745 \\ 
+  35 & 4.121 & 3.267 & 2.874 & 2.641 & 2.485 & 2.372 & 2.285 & 2.217 & 2.161 & 2.114 & 2.041 & 1.963 & 1.878 & 1.824 & 1.786 & 1.735 \\ 
+  36 & 4.113 & 3.259 & 2.866 & 2.634 & 2.477 & 2.364 & 2.277 & 2.209 & 2.153 & 2.106 & 2.033 & 1.954 & 1.870 & 1.815 & 1.776 & 1.726 \\ 
+  37 & 4.105 & 3.252 & 2.859 & 2.626 & 2.470 & 2.356 & 2.270 & 2.201 & 2.145 & 2.098 & 2.025 & 1.946 & 1.861 & 1.806 & 1.768 & 1.717 \\ 
+  38 & 4.098 & 3.245 & 2.852 & 2.619 & 2.463 & 2.349 & 2.262 & 2.194 & 2.138 & 2.091 & 2.017 & 1.939 & 1.853 & 1.798 & 1.760 & 1.708 \\ 
+  39 & 4.091 & 3.238 & 2.845 & 2.612 & 2.456 & 2.342 & 2.255 & 2.187 & 2.131 & 2.084 & 2.010 & 1.931 & 1.846 & 1.791 & 1.752 & 1.700 \\ 
+  40 & 4.085 & 3.232 & 2.839 & 2.606 & 2.449 & 2.336 & 2.249 & 2.180 & 2.124 & 2.077 & 2.003 & 1.924 & 1.839 & 1.783 & 1.744 & 1.693 \\ 
+   \hline
+\end{tabular}
+\caption{0.95-Quantile der $F$-Verteilung mit $v_1$ und $v_2$ Freiheitsgraden.}
+\end{center}
+\end{sidewaystable}
+
+
+
+
+% latex table generated in R 2.12.0 by xtable 1.5-6 package
+% Thu Jan 27 15:40:19 2011
+\begin{sidewaystable}[ht]
+\begin{center}
+\begin{tabular}{rrrrrrrrrrrrrrrrr}
+  \hline
+$v_2$/$v_1$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 12 & 15 & 20 & 25 & 30 & 40 \\ 
+  \hline
+1 & 4052.18 & 4999.50 & 5403.35 & 5624.58 & 5763.65 & 5858.99 & 5928.36 & 5981.07 & 6022.47 & 6055.85 & 6106.32 & 6157.28 & 6208.73 & 6239.83 & 6260.65 & 6286.78 \\ 
+  2 & 98.50 & 99.00 & 99.17 & 99.25 & 99.30 & 99.33 & 99.36 & 99.37 & 99.39 & 99.40 & 99.42 & 99.43 & 99.45 & 99.46 & 99.47 & 99.47 \\ 
+  3 & 34.12 & 30.82 & 29.46 & 28.71 & 28.24 & 27.91 & 27.67 & 27.49 & 27.35 & 27.23 & 27.05 & 26.87 & 26.69 & 26.58 & 26.50 & 26.41 \\ 
+  4 & 21.20 & 18.00 & 16.69 & 15.98 & 15.52 & 15.21 & 14.98 & 14.80 & 14.66 & 14.55 & 14.37 & 14.20 & 14.02 & 13.91 & 13.84 & 13.75 \\ 
+  5 & 16.26 & 13.27 & 12.06 & 11.39 & 10.97 & 10.67 & 10.46 & 10.29 & 10.16 & 10.05 & 9.89 & 9.72 & 9.55 & 9.45 & 9.38 & 9.29 \\ 
+  6 & 13.75 & 10.92 & 9.78 & 9.15 & 8.75 & 8.47 & 8.26 & 8.10 & 7.98 & 7.87 & 7.72 & 7.56 & 7.40 & 7.30 & 7.23 & 7.14 \\ 
+  7 & 12.25 & 9.55 & 8.45 & 7.85 & 7.46 & 7.19 & 6.99 & 6.84 & 6.72 & 6.62 & 6.47 & 6.31 & 6.16 & 6.06 & 5.99 & 5.91 \\ 
+  8 & 11.26 & 8.65 & 7.59 & 7.01 & 6.63 & 6.37 & 6.18 & 6.03 & 5.91 & 5.81 & 5.67 & 5.52 & 5.36 & 5.26 & 5.20 & 5.12 \\ 
+  9 & 10.56 & 8.02 & 6.99 & 6.42 & 6.06 & 5.80 & 5.61 & 5.47 & 5.35 & 5.26 & 5.11 & 4.96 & 4.81 & 4.71 & 4.65 & 4.57 \\ 
+  10 & 10.04 & 7.56 & 6.55 & 5.99 & 5.64 & 5.39 & 5.20 & 5.06 & 4.94 & 4.85 & 4.71 & 4.56 & 4.41 & 4.31 & 4.25 & 4.17 \\ 
+  11 & 9.65 & 7.21 & 6.22 & 5.67 & 5.32 & 5.07 & 4.89 & 4.74 & 4.63 & 4.54 & 4.40 & 4.25 & 4.10 & 4.01 & 3.94 & 3.86 \\ 
+  12 & 9.33 & 6.93 & 5.95 & 5.41 & 5.06 & 4.82 & 4.64 & 4.50 & 4.39 & 4.30 & 4.16 & 4.01 & 3.86 & 3.76 & 3.70 & 3.62 \\ 
+  13 & 9.07 & 6.70 & 5.74 & 5.21 & 4.86 & 4.62 & 4.44 & 4.30 & 4.19 & 4.10 & 3.96 & 3.82 & 3.66 & 3.57 & 3.51 & 3.43 \\ 
+  14 & 8.86 & 6.51 & 5.56 & 5.04 & 4.69 & 4.46 & 4.28 & 4.14 & 4.03 & 3.94 & 3.80 & 3.66 & 3.51 & 3.41 & 3.35 & 3.27 \\ 
+  15 & 8.68 & 6.36 & 5.42 & 4.89 & 4.56 & 4.32 & 4.14 & 4.00 & 3.89 & 3.80 & 3.67 & 3.52 & 3.37 & 3.28 & 3.21 & 3.13 \\ 
+  16 & 8.53 & 6.23 & 5.29 & 4.77 & 4.44 & 4.20 & 4.03 & 3.89 & 3.78 & 3.69 & 3.55 & 3.41 & 3.26 & 3.16 & 3.10 & 3.02 \\ 
+  17 & 8.40 & 6.11 & 5.18 & 4.67 & 4.34 & 4.10 & 3.93 & 3.79 & 3.68 & 3.59 & 3.46 & 3.31 & 3.16 & 3.07 & 3.00 & 2.92 \\ 
+  18 & 8.29 & 6.01 & 5.09 & 4.58 & 4.25 & 4.01 & 3.84 & 3.71 & 3.60 & 3.51 & 3.37 & 3.23 & 3.08 & 2.98 & 2.92 & 2.84 \\ 
+  19 & 8.18 & 5.93 & 5.01 & 4.50 & 4.17 & 3.94 & 3.77 & 3.63 & 3.52 & 3.43 & 3.30 & 3.15 & 3.00 & 2.91 & 2.84 & 2.76 \\ 
+  20 & 8.10 & 5.85 & 4.94 & 4.43 & 4.10 & 3.87 & 3.70 & 3.56 & 3.46 & 3.37 & 3.23 & 3.09 & 2.94 & 2.84 & 2.78 & 2.69 \\ 
+  21 & 8.02 & 5.78 & 4.87 & 4.37 & 4.04 & 3.81 & 3.64 & 3.51 & 3.40 & 3.31 & 3.17 & 3.03 & 2.88 & 2.79 & 2.72 & 2.64 \\ 
+  22 & 7.95 & 5.72 & 4.82 & 4.31 & 3.99 & 3.76 & 3.59 & 3.45 & 3.35 & 3.26 & 3.12 & 2.98 & 2.83 & 2.73 & 2.67 & 2.58 \\ 
+  23 & 7.88 & 5.66 & 4.76 & 4.26 & 3.94 & 3.71 & 3.54 & 3.41 & 3.30 & 3.21 & 3.07 & 2.93 & 2.78 & 2.69 & 2.62 & 2.54 \\ 
+  24 & 7.82 & 5.61 & 4.72 & 4.22 & 3.90 & 3.67 & 3.50 & 3.36 & 3.26 & 3.17 & 3.03 & 2.89 & 2.74 & 2.64 & 2.58 & 2.49 \\ 
+  25 & 7.77 & 5.57 & 4.68 & 4.18 & 3.85 & 3.63 & 3.46 & 3.32 & 3.22 & 3.13 & 2.99 & 2.85 & 2.70 & 2.60 & 2.54 & 2.45 \\ 
+  26 & 7.72 & 5.53 & 4.64 & 4.14 & 3.82 & 3.59 & 3.42 & 3.29 & 3.18 & 3.09 & 2.96 & 2.81 & 2.66 & 2.57 & 2.50 & 2.42 \\ 
+  27 & 7.68 & 5.49 & 4.60 & 4.11 & 3.78 & 3.56 & 3.39 & 3.26 & 3.15 & 3.06 & 2.93 & 2.78 & 2.63 & 2.54 & 2.47 & 2.38 \\ 
+  28 & 7.64 & 5.45 & 4.57 & 4.07 & 3.75 & 3.53 & 3.36 & 3.23 & 3.12 & 3.03 & 2.90 & 2.75 & 2.60 & 2.51 & 2.44 & 2.35 \\ 
+  29 & 7.60 & 5.42 & 4.54 & 4.04 & 3.73 & 3.50 & 3.33 & 3.20 & 3.09 & 3.00 & 2.87 & 2.73 & 2.57 & 2.48 & 2.41 & 2.33 \\ 
+  30 & 7.56 & 5.39 & 4.51 & 4.02 & 3.70 & 3.47 & 3.30 & 3.17 & 3.07 & 2.98 & 2.84 & 2.70 & 2.55 & 2.45 & 2.39 & 2.30 \\ 
+  31 & 7.53 & 5.36 & 4.48 & 3.99 & 3.67 & 3.45 & 3.28 & 3.15 & 3.04 & 2.96 & 2.82 & 2.68 & 2.52 & 2.43 & 2.36 & 2.27 \\ 
+  32 & 7.50 & 5.34 & 4.46 & 3.97 & 3.65 & 3.43 & 3.26 & 3.13 & 3.02 & 2.93 & 2.80 & 2.65 & 2.50 & 2.41 & 2.34 & 2.25 \\ 
+  33 & 7.47 & 5.31 & 4.44 & 3.95 & 3.63 & 3.41 & 3.24 & 3.11 & 3.00 & 2.91 & 2.78 & 2.63 & 2.48 & 2.39 & 2.32 & 2.23 \\ 
+  34 & 7.44 & 5.29 & 4.42 & 3.93 & 3.61 & 3.39 & 3.22 & 3.09 & 2.98 & 2.89 & 2.76 & 2.61 & 2.46 & 2.37 & 2.30 & 2.21 \\ 
+  35 & 7.42 & 5.27 & 4.40 & 3.91 & 3.59 & 3.37 & 3.20 & 3.07 & 2.96 & 2.88 & 2.74 & 2.60 & 2.44 & 2.35 & 2.28 & 2.19 \\ 
+  36 & 7.40 & 5.25 & 4.38 & 3.89 & 3.57 & 3.35 & 3.18 & 3.05 & 2.95 & 2.86 & 2.72 & 2.58 & 2.43 & 2.33 & 2.26 & 2.18 \\ 
+  37 & 7.37 & 5.23 & 4.36 & 3.87 & 3.56 & 3.33 & 3.17 & 3.04 & 2.93 & 2.84 & 2.71 & 2.56 & 2.41 & 2.31 & 2.25 & 2.16 \\ 
+  38 & 7.35 & 5.21 & 4.34 & 3.86 & 3.54 & 3.32 & 3.15 & 3.02 & 2.92 & 2.83 & 2.69 & 2.55 & 2.40 & 2.30 & 2.23 & 2.14 \\ 
+  39 & 7.33 & 5.19 & 4.33 & 3.84 & 3.53 & 3.30 & 3.14 & 3.01 & 2.90 & 2.81 & 2.68 & 2.54 & 2.38 & 2.29 & 2.22 & 2.13 \\ 
+  40 & 7.31 & 5.18 & 4.31 & 3.83 & 3.51 & 3.29 & 3.12 & 2.99 & 2.89 & 2.80 & 2.66 & 2.52 & 2.37 & 2.27 & 2.20 & 2.11 \\ 
+   \hline
+\end{tabular}
+\caption{0.99-Quantile der $F$-Verteilung mit $v_1$ und $v_2$ Freiheitsgraden.}
+\end{center}
+\end{sidewaystable}
+
+
+\newpage
+
+% latex table generated in R 2.12.0 by xtable 1.5-6 package
+% Fri Feb 03 11:44:30 2012
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrrr}
+  \hline
+Freiheitsgrade & $\alpha=0.9$ & $\alpha=0.95$ & $\alpha$=0.975 & $\alpha=0.99$ & $\alpha=0.995$ \\ 
+  \hline
+    1 & 2.7055 & 3.8415 & 5.0239 & 6.6349 & 7.8794 \\ 
+      2 & 4.6052 & 5.9915 & 7.3778 & 9.2103 & 10.5966 \\ 
+      3 & 6.2514 & 7.8147 & 9.3484 & 11.3449 & 12.8382 \\ 
+      4 & 7.7794 & 9.4877 & 11.1433 & 13.2767 & 14.8603 \\ 
+      5 & 9.2364 & 11.0705 & 12.8325 & 15.0863 & 16.7496 \\ 
+      6 & 10.6446 & 12.5916 & 14.4494 & 16.8119 & 18.5476 \\ 
+      7 & 12.0170 & 14.0671 & 16.0128 & 18.4753 & 20.2777 \\ 
+      8 & 13.3616 & 15.5073 & 17.5345 & 20.0902 & 21.9550 \\ 
+      9 & 14.6837 & 16.9190 & 19.0228 & 21.6660 & 23.5894 \\ 
+     10 & 15.9872 & 18.3070 & 20.4832 & 23.2093 & 25.1882 \\ 
+     11 & 17.2750 & 19.6751 & 21.9200 & 24.7250 & 26.7568 \\ 
+     12 & 18.5493 & 21.0261 & 23.3367 & 26.2170 & 28.2995 \\ 
+     13 & 19.8119 & 22.3620 & 24.7356 & 27.6882 & 29.8195 \\ 
+     14 & 21.0641 & 23.6848 & 26.1189 & 29.1412 & 31.3193 \\ 
+     15 & 22.3071 & 24.9958 & 27.4884 & 30.5779 & 32.8013 \\ 
+     16 & 23.5418 & 26.2962 & 28.8454 & 31.9999 & 34.2672 \\ 
+     17 & 24.7690 & 27.5871 & 30.1910 & 33.4087 & 35.7185 \\ 
+     18 & 25.9894 & 28.8693 & 31.5264 & 34.8053 & 37.1565 \\ 
+     19 & 27.2036 & 30.1435 & 32.8523 & 36.1909 & 38.5823 \\ 
+     20 & 28.4120 & 31.4104 & 34.1696 & 37.5662 & 39.9968 \\ 
+     21 & 29.6151 & 32.6706 & 35.4789 & 38.9322 & 41.4011 \\ 
+     22 & 30.8133 & 33.9244 & 36.7807 & 40.2894 & 42.7957 \\ 
+     23 & 32.0069 & 35.1725 & 38.0756 & 41.6384 & 44.1813 \\ 
+     24 & 33.1962 & 36.4150 & 39.3641 & 42.9798 & 45.5585 \\ 
+     25 & 34.3816 & 37.6525 & 40.6465 & 44.3141 & 46.9279 \\ 
+     26 & 35.5632 & 38.8851 & 41.9232 & 45.6417 & 48.2899 \\ 
+     27 & 36.7412 & 40.1133 & 43.1945 & 46.9629 & 49.6449 \\ 
+     28 & 37.9159 & 41.3371 & 44.4608 & 48.2782 & 50.9934 \\ 
+     29 & 39.0875 & 42.5570 & 45.7223 & 49.5879 & 52.3356 \\ 
+     30 & 40.2560 & 43.7730 & 46.9792 & 50.8922 & 53.6720 \\ 
+     31 & 41.4217 & 44.9853 & 48.2319 & 52.1914 & 55.0027 \\ 
+     32 & 42.5847 & 46.1943 & 49.4804 & 53.4858 & 56.3281 \\ 
+     33 & 43.7452 & 47.3999 & 50.7251 & 54.7755 & 57.6484 \\ 
+     34 & 44.9032 & 48.6024 & 51.9660 & 56.0609 & 58.9639 \\ 
+     35 & 46.0588 & 49.8018 & 53.2033 & 57.3421 & 60.2748 \\ 
+     36 & 47.2122 & 50.9985 & 54.4373 & 58.6192 & 61.5812 \\ 
+     37 & 48.3634 & 52.1923 & 55.6680 & 59.8925 & 62.8833 \\ 
+     38 & 49.5126 & 53.3835 & 56.8955 & 61.1621 & 64.1814 \\ 
+     39 & 50.6598 & 54.5722 & 58.1201 & 62.4281 & 65.4756 \\ 
+     40 & 51.8051 & 55.7585 & 59.3417 & 63.6907 & 66.7660 \\ 
+   \hline
+\end{tabular}
+\caption{Quantile der Chi-Quadrat-Verteilung.}
+\end{center}
+\end{table}
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
